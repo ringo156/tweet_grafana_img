@@ -9,7 +9,7 @@ defmodule TweetGrafanaImg.Tweet do
       access_token: Application.get_env(:extwitter, :oauth)[:access_token],
       access_token_secret: Application.get_env(:extwitter, :oauth)[:access_token_secret],
     )
-    ExTwitter.update(text)
+    resp = ExTwitter.update(text)
   end
 
 end
