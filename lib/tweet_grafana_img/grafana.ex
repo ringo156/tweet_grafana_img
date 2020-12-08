@@ -5,12 +5,20 @@ defmodule TweetGrafanaImg.Grafana do
   @url ""
   @token ""
 
-  def get_graph() do
+  # ToDoパネルの選択
+
+  def get_panel() do
     headers = make_headers(@token)
-    params = make_params(System.os_time - 86400 * 1000000000, System.os_time)
+    from = System.os_time - 86400 * 1000000000 |> div(1000000)
+    params = make_params(from, div(System.os_time, 1000000))
     options = make_options(5000)
     request = make_request(:get, headers, options, params, @url)
     HTTPoison.request(request)
+  end
+
+  def save_panel() do
+    {:ok, resp} = get_graph()
+    File.write!("./teset.png", resp.body)
   end
 
   def make_request(method, headers, options, params, url) do
