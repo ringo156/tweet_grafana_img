@@ -22,6 +22,6 @@ defmodule TweetGrafanaImg.Tweet do
     resp = ExTwitter.update_with_media(text, media)
   end
 
-  # 画像複数枚tweetするときどうするか確認とテストする
+  # ToDo: 画像複数枚tweetするときどうするか確認とテストする
 
 end
