@@ -6,18 +6,22 @@ defmodule TweetGrafanaImg.Grafana do
   @token ""
 
   # ToDoパネルの選択
+  # ToDo時間の間隔可変にする
 
   def get_panel() do
     headers = make_headers(@token)
-    from = System.os_time - 86400 * 1000000000 |> div(1000000)
-    params = make_params(from, div(System.os_time, 1000000))
-    options = make_options(5000)
+    # from = System.os_time - 86400 * 1000000000 |> div(1000000)
+    # params = make_params(from, div(System.os_time, 1000000))
+    params = System.os_time - 86400 * 1000000000
+    |> div(1000000)
+    |> make_params(System.os_time |> div(1000000))
+    options = make_options(8000)
     request = make_request(:get, headers, options, params, @url)
     HTTPoison.request(request)
   end
 
   def save_panel() do
-    {:ok, resp} = get_graph()
+    {:ok, resp} = get_panel()
     File.write!("./teset.png", resp.body)
   end
 
