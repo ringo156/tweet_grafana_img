@@ -8,3 +8,8 @@ config :extwitter, :oauth, [
   access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
   access_token_secret: System.get_env("TWITTER_ACCESS_SECRET")
 ]
+
+config :tweet_grafana_img, TweetGrafanaImg.Scheduler,
+  jobs: [
+    {"@daily", {TweetGrafanaImg.Scheduler, :daily_tweet, []}}
+  ]

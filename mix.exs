@@ -14,7 +14,8 @@ defmodule TweetGrafanaImg.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :crypto, :public_key]
+      extra_applications: [:logger, :crypto, :public_key],
+      mod: {TweetGrafanaImg.Application, []}
     ]
   end
 
@@ -27,6 +28,8 @@ defmodule TweetGrafanaImg.MixProject do
       {:httpoison, "~> 1.7"},
       {:oauther, "~> 1.1"},
       {:extwitter, "~> 0.12"},
+      {:quantum, "~> 3.0"},
+      {:timex, "~> 3.5"},
     ]
   end
 end

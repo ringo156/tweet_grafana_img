@@ -9,7 +9,7 @@ defmodule TweetGrafanaImg.Tweet do
       access_token: Application.get_env(:extwitter, :oauth)[:access_token],
       access_token_secret: Application.get_env(:extwitter, :oauth)[:access_token_secret],
     )
-    resp = ExTwitter.update(text)
+    ExTwitter.update(text)
   end
 
   def tweet(text, media) do
@@ -19,7 +19,7 @@ defmodule TweetGrafanaImg.Tweet do
       access_token: Application.get_env(:extwitter, :oauth)[:access_token],
       access_token_secret: Application.get_env(:extwitter, :oauth)[:access_token_secret],
     )
-    resp = ExTwitter.update_with_media(text, media)
+     ExTwitter.update_with_media(text, media)
   end
 
   # ToDo: 画像複数枚tweetするときどうするか確認とテストする
